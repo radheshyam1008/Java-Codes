@@ -1,0 +1,44 @@
+// Define a class named Car
+class Car {
+    // Properties (or attributes) of the Car class
+    String brand;
+    String color;
+    int year;
+
+    // Constructor to initialize a Car object
+    Car(String brand, String color, int year) {
+        this.brand = brand;
+        this.color = color;
+        this.year = year;
+    }
+
+    // Method to display the car's details
+    void displayDetails() {
+        System.out.println("Car Details:");
+        System.out.println("Brand: " + brand);
+        System.out.println("Color: " + color);
+        System.out.println("Year: " + year);
+    }
+
+    // Method to simulate starting the car
+    void startCar() {
+        System.out.println(brand + " is starting...");
+    }
+}
+
+public class ClassAndObjects {
+    public static void main(String[] args) {
+        // Creating objects (instances) of the Car class
+        Car car1 = new Car("Tesla", "Red", 2023);
+        Car car2 = new Car("BMW", "Blue", 2020);
+
+        // Display details of each car
+        car1.displayDetails();
+        car1.startCar();
+
+        System.out.println(); // Blank line for separation
+
+        car2.displayDetails();
+        car2.startCar();
+    }
+}
