@@ -1,0 +1,41 @@
+import java.util.Scanner;
+class KeithNumber{
+public static void main(String[] args){
+Scanner scan=new Scanner(System.in);
+int num,a,b,k,rem,sum=0,count=0;
+System.out.println("Enter your number:");
+num=scan.nextInt();
+a=num;
+while(a>0){
+rem=a%10;
+count=count+1;
+a=a/10;
+}
+int array[];
+array=new int[count];
+b=num;
+k=count-1;
+while(b>0){
+array[k]=b%10;
+k--;
+b=b/10;
+}
+while(sum<num){
+sum=0;
+for(int i=0;i<count;i++){
+sum=sum+array[i];
+}
+for(int j=0;j<count-1;j++){
+array[j]=array[j+1];
+}
+array[count-1]=sum;
+}
+if(sum==num){
+System.out.println(num+" "+"is a KeithNumber");
+}
+else{
+System.out.println(num+" "+"is not a KeithNumber");
+}
+}
+}
+
