@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class EvilNumber {
+
+    // Method to count the number of 1s in the binary representation of a number
+    private static int countOnesInBinary(int num) {
+        int count = 0;
+        while (num > 0) {
+            if ((num & 1) == 1) { // Check if the least significant bit is 1
+                count++;
+            }
+            num >>= 1; // Right shift the number by 1
+        }
+        return count;
+    }
+
+    // Method to check if a number is an Evil Number
+    public static boolean isEvilNumber(int num) {
+        int onesCount = countOnesInBinary(num);
+        return onesCount % 2 == 0; // Check if the count of 1s is even
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number to check if it's an Evil Number: ");
+        int number = sc.nextInt();
+
+        if (isEvilNumber(number)) {
+            System.out.println(number + " is an Evil Number.");
+        } else {
+            System.out.println(number + " is not an Evil Number.");
+        }
+
+        sc.close();
+    }
+}
