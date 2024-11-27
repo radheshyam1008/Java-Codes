@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class SmithNumber {
+
+    // Method to calculate the sum of digits of a number
+    private static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    // Method to find the prime factors of a number and calculate the sum of their digits
+    private static int sumOfPrimeFactorDigits(int num) {
+        int sum = 0;
+        int originalNum = num;
+
+        // Check for factors of 2
+        while (num % 2 == 0) {
+            sum += sumOfDigits(2);
+            num /= 2;
+        }
+
+        // Check for odd factors
+        for (int i = 3; i <= Math.sqrt(num); i += 2) {
+            while (num % i == 0) {
+                sum += sumOfDigits(i);
+                num /= i;
+            }
+        }
+
+        // If num is still a prime factor greater than 2
+        if (num > 2 && num != originalNum) {
+            sum += sumOfDigits(num);
+        }
+
+        return sum;
+    }
+
+    // Method to check if a number is a composite number
+    private static boolean isComposite(int num) {
+        if (num < 4) return false; // Numbers less than 4 cannot be composite
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Main method to check if a number is a Smith Number
+    public static boolean isSmithNumber(int num) {
+        if (!isComposite(num)) {
+            return false; // Smith Numbers must be composite
+        }
+
+        int digitSum = sumOfDigits(num);
+        int primeFactorDigitSum = sumOfPrimeFactorDigits(num);
+
+        return digitSum == primeFactorDigitSum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number to check if it's a Smith Number: ");
+        int number = sc.nextInt();
+
+        if (isSmithNumber(number)) {
+            System.out.println(number + " is a Smith Number.");
+        } else {
+            System.out.println(number + " is not a Smith Number.");
+        }
+
+        sc.close();
+    }
+}
