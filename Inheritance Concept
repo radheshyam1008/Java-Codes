@@ -1,0 +1,65 @@
+// Parent class: Animal
+class Animal {
+    // Property of Animal class
+    String name;
+
+    // Constructor to initialize the name of the animal
+    Animal(String name) {
+        this.name = name;
+    }
+
+    // Method to display the sound of the animal
+    void sound() {
+        System.out.println("The animal makes a sound.");
+    }
+
+    // Method to display the name of the animal
+    void displayInfo() {
+        System.out.println("Animal's name is: " + name);
+    }
+}
+
+// Child class: Dog inherits from Animal
+class Dog extends Animal {
+    // Constructor of Dog class that calls the superclass constructor
+    Dog(String name) {
+        super(name);  // Call to the superclass constructor
+    }
+
+    // Overriding the sound method
+    @Override
+    void sound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+// Child class: Cat inherits from Animal
+class Cat extends Animal {
+    // Constructor of Cat class that calls the superclass constructor
+    Cat(String name) {
+        super(name);  // Call to the superclass constructor
+    }
+
+    // Overriding the sound method
+    @Override
+    void sound() {
+        System.out.println("The cat meows.");
+    }
+}
+
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        // Creating objects of Dog and Cat
+        Dog myDog = new Dog("Buddy");
+        Cat myCat = new Cat("Whiskers");
+
+        // Using methods from the Animal class and the overridden methods
+        myDog.displayInfo();
+        myDog.sound();
+
+        System.out.println(); // Blank line for separation
+
+        myCat.displayInfo();
+        myCat.sound();
+    }
+}
